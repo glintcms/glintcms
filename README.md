@@ -15,7 +15,7 @@ The NO Management Content Management System
  - Clean Code over Convention over Configuration
  - easy to learn
  - fun to code
- - flexible /
+ - flexible
  - reusable
  - inline editing
  - minimal management backend
