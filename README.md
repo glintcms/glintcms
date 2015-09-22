@@ -157,7 +157,7 @@ The `widget` itself exposes the `load` function to integrate with the `wrap` loa
 
 ## wrap
 The `wrap` (`glint-wrap`) wraps it all up.
-- it can have several `container`s and `widget`s.
+- it can have several `container`s, `widget`s and `wrap`s.
 - it also is involved in what should be loaded (rendered) on the server and what in the browser.
 
 
