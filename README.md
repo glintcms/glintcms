@@ -137,7 +137,7 @@ The `container` (`glint-container`) holds the different blocks and orchestrates 
 - what should be loaded (rendered) on the server and what in the browser.
 - switching the blocks into the edit mode `edit` and back (`save` or `load` on cancel)
 - passing the data between the `adapter` and the `block`s.
-- a container has got one adapter and can have several `block`s.
+- a container has got one adapter and most likely has several `block`s.
 
 If you don't have any editable content on your page, you don't need a container.
 
