@@ -107,7 +107,7 @@ you can use this for example to let everything be rendered on the server,
 when the site is being called by a bot, search engine, crawler or the like.
 
 
-*place*
+**place**
 glint is designed to use on the server as well as in the browser (pick you buzzword for it... universal, polymorph, what ever you like).
 With the `place` get/set method, you can define, where you would like the control to be rendered.
 
@@ -120,7 +120,7 @@ These are the available options (strings):
 - force:both
 
 
-    priorities:
+**priorities**
 
     (0:low priority ... 3:high priority)
 
@@ -170,10 +170,8 @@ You can get/set these properties on the `wrap`.
 - prepend
 - append
 - el
-
 - place
 - editable
-
 - cid
 
 When you set `editable` or `place` on the wrap, the value is also set on all of it`s controls.
@@ -186,8 +184,20 @@ When you set `editable` or `place` on the wrap, the value is also set on all of 
 ### constructor
 
 ```javascript
-var wrap = Wrap(
 
+// the `wrap` has got the optional key, control arguments. what's added in the constructor get's added with the `parallel` workflow.
+var wrap = Wrap(key, control);
+
+// but you can also create the Wrap fist, and then define your workflow.
+// in this example the articles and projects `load in parallel` and after they are done,
+the resulting transfer object is handled over to the next steps: here it's first the contentWidget, and then the layoutWrap after the previous step is done.
+var wrap = Wrap();
+wrap
+  .parallel(container)
+  .parallel('articles', articles.selector('.js-articles'))
+  .parallel('projects', projects.selector('.js-projects'))
+  .series('content', contentWidget.place('force:server'))
+  .series(LayoutWrap(o.layout).place('force:server'))
 ```
 
 ### defaults
@@ -272,9 +282,7 @@ You can get/set these properties on the `widget`.
 - prepend
 - append
 - el
-
 - place
-
 - template
 - data
 - render
@@ -360,7 +368,6 @@ You can get/set these properties on the `container`.
 - place
 - template
 - editable
-
 - blocks
 - adapter
 
@@ -416,7 +423,7 @@ container
 2. it then calls the `edit` method on all of the `block`s.
 
 
-### save (Block[]::save -> Adapter::save)
+### save
 (runs only in the browser)
 
 > Internal sequence:
@@ -427,7 +434,7 @@ container
 
 
 
-### cancel (noop)
+### cancel
 (runs only in the browser)
 
 > Internal sequence:
@@ -435,7 +442,7 @@ container
 1. it basically just calls the `load` on this container.
 
 
-### delete (Adapter::delete)
+### delete
 (runs only in the browser)
 
 > Internal sequence:
@@ -464,7 +471,6 @@ You can get/set these properties on the `block`.
 - id
 - selector
 - el
-
 - place
 
 
@@ -491,8 +497,7 @@ block.undelegate(textBlock);
 The `block` basically delegates the method calls to the specific `block-provider`.
 Due to a runtime behaviour (missing `el` "HTMLElement"), the `block` has the ability to buffer method calls in a FIFO, and execute them later.
 
-In addition to the 'getters and setters', it buffers and forwards the following methods
-
+In addition to the 'getters and setters', it buffers and forwards the following methods:
 - load
 - edit
 - save
@@ -564,7 +569,6 @@ adapter.undelegate(ajaxAdapter);
 ```
 
 The `adapter` basically delegates the method calls to the specific `adapter-provider`.
-
 - find(query, callback)
 - load(id, callback)
 - save(id, content, callback)

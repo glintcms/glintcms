@@ -6,18 +6,25 @@ And I think you can say, it is a strength of *GlintCMS*, that it is very flexibl
 ## providers
 If you want to integrate third party modules for example for a new editing experience, you can just create a new `block-provider`, and implement the methods:
 
-    `load`, `edit`, `save`
-    check out e.g.: [glint-block-text](https://www.npmjs.com/package/glint-block-text)
+- `load`
+- `edit`
+- `save`
+
+Have a look at e.g.: [glint-block-text](https://www.npmjs.com/package/glint-block-text)
 
 You don't have to worry, how the stuff is being saved, the `adapter` takes care of that.
 
 
 À propos `adapter`, if you want store your data in another `database`, you can create a new `adapter-provider` and implement the methods:
 
-    `find`, `load`, `save`, and `delete`
-    check out e.g.: [glint-adapter-fs](https://www.npmjs.com/package/glint-adapter-fs)
+- `find`
+- `load`
+- `save`
+- `delete`
 
-Then extend your find queries with the query language of your new `provider`.
+Check out e.g.: [glint-adapter-fs](https://www.npmjs.com/package/glint-adapter-fs)
+
+Then extend your find queries `adapter.mixin()` with the query language of your new `provider`.
 
 
 ## plugins
@@ -26,15 +33,14 @@ Another great opportunity is, that you can create plugins for the different `bui
 
 Actually, much of the functionality of *GlintCMS* is build with plugin modules:
 
-    check out e.g.:
+Have a look at the examples:
 
-    - [block plugin[(https://www.npmjs.com/package/glint-plugin-block-style-editable)
-    - [adapter plugin](https://www.npmjs.com/package/glint-plugin-adapter-dates)
-    - [wrap plugin](https://www.npmjs.com/package/glint-plugin-wrap-i18n)
+- [block plugin[(https://www.npmjs.com/package/glint-plugin-block-style-editable)
+- [adapter plugin](https://www.npmjs.com/package/glint-plugin-adapter-dates)
+- [wrap plugin](https://www.npmjs.com/package/glint-plugin-wrap-i18n)
 
 
-    or search npm for [glint-plugin](https://www.npmjs.com/search?q=glint-plugin)
-
+and search npm for [glint-plugin](https://www.npmjs.com/search?q=glint-plugin)
 
 
 ### use

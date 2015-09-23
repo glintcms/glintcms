@@ -163,13 +163,19 @@ The `wrap` (`glint-wrap`) wraps it all up.
 - it also is involved in what should be loaded (rendered) on the server and what in the browser.
 
 
+
+# next steps
+
+- Try out the starter project [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso). (it should only take a couple of minutes to get going).
+- Have a look at the [API Documentation](API.md)
+- As well as the [Extend Documentation](EXTEND.md)
+- Have a look at the code of the modules, shout out if you need help.
+
+
+
 # stay tuned
 
-for more detailed api documentation, and for usage scenarios.
-
-In the mean time, please have a look at the code, shout out if you need help.
-
-Try out the starter project [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso). (it should only take a couple of minutes to get going).
+... for more detailed usage scenarios.
 
 # author
 
