@@ -43,7 +43,7 @@ It is written purely in JavaScript and runs on [node.js](https://nodejs.org) and
 - It should work with all of the newer browsers.
 - [Express](http://expressjs.com) is used on the server side
 - It runs on Linux and Mac OS, Windows is not yet supported (any help appreciated)
-- Tested with node 0.12.7 aaaaand trörööööö 4.0.0
+- Tested with node 0.12.7 aaaaand trörööööö 4.y.z
 
 ## BYODB
 
@@ -66,7 +66,8 @@ Just keep in mind that not all of them perform as good. We made the best experie
 
 
 # use cases
-
+Because *GlintCMS* is designed from the very beginning,
+to run efficient on the server as well as in the browser, it is a really good fit for many things.
 - Web Application (Single Page Applications)
 - Web Sites / Platforms (Heavy server side rendering)
 

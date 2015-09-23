@@ -190,7 +190,8 @@ var wrap = Wrap(key, control);
 
 // but you can also create the Wrap fist, and then define your workflow.
 // in this example the articles and projects `load in parallel` and after they are done,
-the resulting transfer object is handled over to the next steps: here it's first the contentWidget, and then the layoutWrap after the previous step is done.
+// the resulting transfer object is handled over to the next steps:
+//   in this exampe it's first the contentWidget, and then the layoutWrap after the previous step is done.
 var wrap = Wrap();
 wrap
   .parallel(container)

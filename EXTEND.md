@@ -35,7 +35,7 @@ Actually, much of the functionality of *GlintCMS* is build with plugin modules:
 
 Have a look at the examples:
 
-- [block plugin[(https://www.npmjs.com/package/glint-plugin-block-style-editable)
+- [block plugin](https://www.npmjs.com/package/glint-plugin-block-style-editable)
 - [adapter plugin](https://www.npmjs.com/package/glint-plugin-adapter-dates)
 - [wrap plugin](https://www.npmjs.com/package/glint-plugin-wrap-i18n)
 
