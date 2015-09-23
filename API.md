@@ -11,11 +11,15 @@ You wouldn't use a `TextBlock` directly, but via a `Block` that holds the `TextB
 var block = Block(TextBlock()).use(Style());
 ```
 
-The following `api` document describes how to "use" the `building blocks`, (not how to extend them).
-
-
 
 # general
+
+## extendability
+
+Have a look at the [extend](EXTEND.md) documentation.
+
+The following `api` document describes how to "use" the `building blocks`, (not how to extend them).
+
 
 ## naming/require
 The `building blocks` are called: `wrap, container, etc.` in this document. However, the module names to require them start always with `glint-`.
@@ -63,6 +67,35 @@ Wrap(o)
      res.send(result.page);
   })
 ```
+
+## events
+
+Most of the `building blocks ` inherit from `EventEmitter` and expose useful events:
+
+```javascript
+// Example from the code:
+var EventEmitter = require('events').EventEmitter;
+
+/**
+ * Expose Block element.
+ */
+exports = module.exports = Block;
+inherits(Block, EventEmitter);
+```
+
+The Events can be especially helpful, when designing a `plugin`.
+
+### get/set
+
+Getter and Setter emit an event:
+- `emit(name, value)`
+
+### methods
+
+The building blocks methods emit events for every method with the given name:
+- `emit(pre-<methodName>, arguments)`
+- `emit(<methodName>, arguments)`
+- `emit(post-<methodName>, arguments)`
 
 
 ## rendering/place
@@ -227,12 +260,12 @@ With a widget, you can render/display noneditable content on the server and/or i
 the `api` property must not be overwritten.
 
 ```javascript
-Wrap.api === 'widget'
+Widget.api === 'widget'
 ```
 
 ### get/set
 
-You can get/set these properties on the `wrap`.
+You can get/set these properties on the `widget`.
 - key
 - id
 - selector
@@ -316,7 +349,7 @@ In the browser, there is more methods:
 the `api` property must not be overwritten.
 
 ```javascript
-Wrap.api === 'container'
+Container.api === 'container'
 ```
 
 ### get/set
@@ -414,23 +447,215 @@ container
 
 # block
 
+The `blocks` are the heart of everything that is editable in *GlintCMS*.
+
 ## properties
 
+### api
+the `api` property must not be overwritten.
+
+```javascript
+Block.api === 'block'
+```
+
+### get/set
+
+You can get/set these properties on the `block`.
+- id
+- selector
+- el
+
+- place
+
+
 ## methods
+
+
+### constructor/methods
+
+```javascript
+// you normally instantiate the `block` with the specific `block-provider` that it should hold
+var block = Block(blockProvider);
+
+// Example:
+var block = Block(TextBlock()).use(Style());
+
+// however you can also add/remove the `block-provider` later with `delegate` and `undelegate`
+var block = Block();
+block.delegate(TextBlock());
+
+// you can also undelegate a block
+block.undelegate(textBlock);
+```
+
+The `block` basically delegates the method calls to the specific `block-provider`.
+Due to a runtime behaviour (missing `el` "HTMLElement"), the `block` has the ability to buffer method calls in a FIFO, and execute them later.
+
+In addition to the 'getters and setters', it buffers and forwards the following methods
+
+- load
+- edit
+- save
+- cancel
+- hasChanged
+- isValid
+
+### plugins
+
+You can extend `block`s with plugins with the `use` method, as well as with the `mixin method`.
+
+#### use
+
+Consult the [extend] documentation or the code.
+
+#### mixin
+
+Consult the [extend] documentation or the code.
+
+
+```javascript
+// Example:
+var block.use(Style());
+
+```
 
 
 # adapter
 
+The `adapter` is the interface to the storage.
+
+
 ## properties
 
+### api
+the `api` property must not be overwritten.
+
+```javascript
+Adapter.api === 'adapter'
+```
+
+### get/set
+
+You can get/set these properties on the `adapter`.
+- db
+- type
+- fn
+
+
+
 ## methods
+
+
+### constructor/methods
+
+```javascript
+// you normally instantiate the `adapter` with the specific `adapter-provider` that it should delegate it's calls to.
+var adapter = Adapter(adapter);
+
+// Example:
+var adapter = Adapter(AjaxAdapter());
+
+// however you can also add/remove the `adapter-provider` later with `delegate` and `undelegate`
+var adapter = Adapter();
+adapter.delegate(AjaxAdapter());
+
+// you can also undelegate a block
+adapter.undelegate(ajaxAdapter);
+```
+
+The `adapter` basically delegates the method calls to the specific `adapter-provider`.
+
+- find(query, callback)
+- load(id, callback)
+- save(id, content, callback)
+- delete(id, callback)
+
+The function has the form: `callback(err, result)`
+
+the `result` object is the parsed javascript object for the given `id`,
+and an array with the matching objects on the `find` callback.
+
+### plugins
+
+You can extend `adapter`s with plugins with the `use` method, as well as with the `mixin method`.
+
+#### use
+
+Consult the [extend] documentation or the code.
+
+#### mixin
+
+the `mixin` is mainly used to extend the adapter's query capability.
+Since the `adapter` does not "magically unify the different storage query language", but exposes it directly,
+the `adapter` needs a way to handle the different provider's queries.
+
+It does it with the mixin:
+
+```javascript
+var mixin = {
+  fs: {
+    findWithLocale: function(locale, fn) {
+      var query = 'this.id.indexOf("__template__") === -1 && this.locale === "' + locale + '"';
+      this.find({$where: query}, fn);
+    }
+  },
+  elasticsearch : {
+    findWithLocale: function(locale, fn) {
+      // pseudocode
+      this.find(elasticSearchSpecificQuery, fn)
+    }
+ }
+};
+
+adapter.mixin(mixin);
+```
+
+As you can see in the example, the mixin must have an object, with the `adapter-provider` name as the key,
+and the functions to `mixin` as the value (nested object).
+
+This way you can support more than just one adapter-plugin,
+and if you use some one else's module that does not have the queries for your provider,
+just add them yourself and send a pull request.
+
+
+```javascript
+// Example:
+var block.use(Style());
+
+```
 
 
 # trigger
 
-## properties
+A `trigger` consumes the `container`s api methods and exposes them to the user in a usable form.
+Therefore `trigger`s are only useful in the browser, not on the server side.
+Although theoretically, you could write a trigger to use on the server side as well, maybe for application integration.
 
-## methods
+```javascript
+// usage example with the trigger implementation: keyboard and sidenav.
+
+var keyboard = require('glint-trigger-keyboard');
+var sidenav = require('glint-trigger-sidenav');
+
+wrap.containers.forEach(function(container) {
+  keyboard().add(container);
+  sidenav().add(container);
+});
+```
+
+The trigger itself ('glint-trigger') is only a `base class`, the trigger implementors can inherit:
+
+```javascript
+// Snippet from the code.
+
+/**
+ * Expose `Keyboard`
+ */
+exports = module.exports = Keyboard;
+inherits(Keyboard, Trigger);
+
+```
+
 
 
 

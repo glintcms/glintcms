@@ -96,6 +96,8 @@ Just keep in mind that not all of them perform as good. We made the best experie
 created with [asciiflow](http://asciiflow.com)
 
 ## block
+Blocks are the heart of everything that is editable in *GlintCMS*.
+
 A block provider can be a plain text `glint-block-text`, or an image or a rich text e.g. `glint-block-ckeditor` etc.
 
 The `block` itself (`glint-block`) is a unifying interface for the block providers.
