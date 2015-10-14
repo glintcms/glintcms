@@ -57,7 +57,7 @@ It is written purely in JavaScript and runs on [node.js](https://nodejs.org) and
 - It should work with all of the newer browsers.
 - [Express](http://expressjs.com) is used on the server side
 - It runs on Linux and Mac OS, Windows is not yet supported (any help appreciated)
-- Tested with node 0.12.7 aaaaand 4.1
+- Tested with node 0.12.x and 4.x
 
 ## BYODB
 
@@ -90,23 +90,22 @@ to run efficient on the server as well as in the browser, it is a really good fi
 
 ```
                                                                          
-   +--------------+        +--------------+        +--------------+
-   |              |        |              |        |              |
-   |    wrap      | +----> |  container   | +----> |    block     |
-   |              |        |              |        |              |
-   +--------------+        +--------------+        +--------------+
+       +--------------+        +--------------+        +--------------+
+       |              |        |              |        |              |
+       |    wrap      | +----> |  container   | +----> |    block     |
+       |              |        |              |        |              |
+       +--------------+        +--------------+        +--------------+
 
-          +                       +
-          |                       |
-          v                       v
+              +                       +
+              |                       |
+              v                       v
 
-   +--------------+        +--------------+        + + + + + + +  +
-   |              |        |              |
-   |    widget    | +----> |   adapter    | +----> +    cache     +
-   |              |        |              |
-   +--------------+        +--------------+        +  + + + + + + +
+       +--------------+        +--------------+        + + + + + + +  +
+       |              |        |              |
+       |    widget    | +----> |   adapter    | +----> +    cache     +
+       |              |        |              |
+       +--------------+        +--------------+        +  + + + + + + +
                                                                          
-
 ```
 created with [asciiflow](http://asciiflow.com)
 
