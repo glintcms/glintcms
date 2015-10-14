@@ -21,8 +21,9 @@ The building blocks of GlintCMS are designed that you can build Web-Sites as wel
 
 **Stability**
 
-Probably between experimental and stable. It is used e.g. on [www.intesso.com](http://intesso.com).
-The best way to get started is, read along and install a starter project e.g. [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso).
+GlintCMS is robust and is used e.g. on [www.intesso.com](http://intesso.com) and [www.glintcms.com](http://glintcms.com). 
+
+The API Stability is somewhere between experimental and stable. 
 
 You can use it out of the box for small to medium sites.
 
@@ -56,7 +57,7 @@ It is written purely in JavaScript and runs on [node.js](https://nodejs.org) and
 - It should work with all of the newer browsers.
 - [Express](http://expressjs.com) is used on the server side
 - It runs on Linux and Mac OS, Windows is not yet supported (any help appreciated)
-- Tested with node 0.12.7 aaaaand trörööööö 4.y.z
+- Tested with node 0.12.7 aaaaand 4.1
 
 ## BYODB
 
