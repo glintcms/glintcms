@@ -1,10 +1,23 @@
-# GlintCMS Documentation
+<table>
+<tr>
+<td>
+<img src="glintcms-logo.png" alt="GlintCMS Logo">
+</td>
+<td>
 
-**The NO Management Content Management System**
-
+<h1>GlintCMS Documentation</h1>
+<pre>        The invisible Content Management System                 </pre>
+<p>
 GlintCMS is an in-page, overlay style WYSIWYG (What you see is what you get) CMS. What this means is that to edit a page you simply navigate to the page as you would when you browse your website. Once you arrive at a page you use the overlaid main menu to perform tasks or you simply hover over the main section of the page to edit content or change page settings.
-
+</p>
+<p>
 The building blocks of GlintCMS are designed that you can build Web-Sites as well as Web-Applications.
+</p>
+
+</td>
+</tr>
+</table>
+
 
 **Stability**
 

@@ -1,0 +1,24 @@
+{
+  "name": "glintcms",
+  "version": "1.0.0",
+  "description": "GlintCMS Documentation",
+  "main": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glintcms/glintcms.git"
+  },
+  "keywords": [
+    "glint",
+    "glintcms",
+    "documentation"
+  ],
+  "author": "Andi Neck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glintcms/glintcms/issues"
+  },
+  "homepage": "https://github.com/glintcms/glintcms#readme"
+}
