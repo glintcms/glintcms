@@ -181,9 +181,12 @@ The `wrap` (`glint-wrap`) wraps it all up.
 # next steps
 
 - Try out one of the starter projects (it should only take a couple of minutes to get going):
-   - [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso) server side rendering web site with i18n
-   - [glintcms-starter-glintcms](https://github.com/glintcms/glintcms-starter-glintcms) hybrid web application
-   - [glintcms-starter-cannesbanannes](https://github.com/glintcms/glintcms-starter-cannesbanannes) single page application with reservation and google calendar integration
+   - [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso)
+   server side rendering web site with i18n
+   - [glintcms-starter-glintcms](https://github.com/glintcms/glintcms-starter-glintcms)
+   hybrid web application
+   - [glintcms-starter-cannesbanannes](https://github.com/glintcms/glintcms-starter-cannesbanannes)
+   single page application with reservation and google calendar integration
 - Have a look at the [API Documentation](API.md)
 - As well as the [Extend Documentation](EXTEND.md)
 - Have a look at the code of the modules, shout out if you need help.
