@@ -21,9 +21,9 @@ The building blocks of GlintCMS are designed that you can build Web-Sites as wel
 
 **Stability**
 
-GlintCMS is robust and is used e.g. on [www.intesso.com](http://intesso.com) and [www.glintcms.com](http://glintcms.com). 
+GlintCMS is robust and is used e.g. on [www.intesso.com](http://intesso.com) and [www.glintcms.com](http://glintcms.com).
 
-The API Stability is somewhere between experimental and stable. 
+The API Stability is somewhere between experimental and stable.
 
 You can use it out of the box for small to medium sites.
 
@@ -180,7 +180,10 @@ The `wrap` (`glint-wrap`) wraps it all up.
 
 # next steps
 
-- Try out the starter project [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso). (it should only take a couple of minutes to get going).
+- Try out one of the starter projects (it should only take a couple of minutes to get going):
+   - [glintcms-starter-intesso](https://github.com/glintcms/glintcms-starter-intesso) server side rendering web site with i18n
+   - [glintcms-starter-glintcms](https://github.com/glintcms/glintcms-starter-glintcms) hybrid web application
+   - [glintcms-starter-cannesbanannes](https://github.com/glintcms/glintcms-starter-cannesbanannes) single page application with reservation and google calendar integration
 - Have a look at the [API Documentation](API.md)
 - As well as the [Extend Documentation](EXTEND.md)
 - Have a look at the code of the modules, shout out if you need help.
